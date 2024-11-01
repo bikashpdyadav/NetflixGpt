@@ -12,7 +12,7 @@ const useTVTopRated = () => {
       API_OPTIONS
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     dispatch(addTVTopRated(data.results));
   };
 

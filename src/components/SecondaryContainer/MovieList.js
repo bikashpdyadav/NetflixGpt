@@ -4,22 +4,30 @@ import { Link } from "react-router-dom";
 
 const MovieList = ({ title, movies, omdbMovies }) => {
   return (
-    <div className="xs:p-0 lg:p-4 lg:mt-8 w-screen">
+    <div className="w-screen mb-6"> {/* Use w-screen to ensure full width and margin for spacing */}
       <h1 className="xs:text-2xl lg:text-3xl text-white pl-6 font-semibold">
         {title}
       </h1>
-      <div className="flex xs:p-3 lg:p-6 xs:ml-4 lg:ml-0 xs:justify-center lg:justify-start">
-        <div className="flex xs:gap-5 lg:gap-0 overflow-x-auto whitespace-nowrap">
+      <div className="flex items-center justify-center w-[95%] xs:p-3 lg:p-6 xs:ml-4 lg:ml-0 overflow-hidden"> {/* Added overflow-hidden to avoid excess width */}
+        <div className="flex xs:gap-5 lg:gap-6 overflow-x-auto whitespace-nowrap">
           {movies?.map((movie) => (
             <Link to={`search/${movie?.id}`} key={movie.id}>
-              <MovieCard key={movie.id} poster_path={movie.poster_path} />
+              <MovieCard 
+                poster_path={movie.poster_path} 
+                className="xs:w-32 lg:w-40" // Define width for responsiveness
+              />
             </Link>
           ))}
         </div>
-        <div className="flex xs:gap-5 lg:gap-0 overflow-x-auto whitespace-nowrap">
-          {omdbMovies?.map((movie, index) => (
+      </div>
+      <div className="flex items-center justify-center w-[95%] xs:p-3 lg:p-6 xs:ml-4 lg:ml-0 overflow-hidden"> {/* Added overflow-hidden to avoid excess width */}
+        <div className="flex xs:gap-5 lg:gap-6 overflow-x-auto whitespace-nowrap">
+          {omdbMovies?.map((movie) => (
             <Link to={`movie/details/${movie?.imdbID}`} key={movie.imdbID}>
-              <OMDBMovieCard key={movie.imdbID} poster_path={movie.Poster} />
+              <OMDBMovieCard 
+                poster_path={movie.Poster} 
+                className="xs:w-32 lg:w-40" // Define width for responsiveness
+              />
             </Link>
           ))}
         </div>

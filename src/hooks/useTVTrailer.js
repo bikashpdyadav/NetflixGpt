@@ -13,7 +13,7 @@ const useTVTrailer = (tvId) => {
         API_OPTIONS
       );
       const data = await response.json();
-      console.log(data);
+      //console.log(data,"hello");
       const filteredTV = data.results?.filter(
         (tvTrailer) =>
           tvTrailer.type === "Trailer" && tvTrailer.name === "Official Trailer"

@@ -14,11 +14,11 @@ const MySpace = () => {
       <div className="xs:block lg:hidden">
         <MenuBar />
       </div>
-      <div className="w-[100%] xs:p-4 lg:p-16 bg-gradient-to-r from-black via-gray-700 to-gray-900 flex flex-col gap-16">
+      <div className="w-full xs:p-4 sm:p-8 lg:p-16 bg-gradient-to-r from-black via-gray-700 to-gray-900 flex flex-col gap-16">
         <TopContainer />
-        <div className="xs:-mt-4 border-b-2 opacity-10"></div>
-        <MiddleContainer />
-        <Footer />
+        <div className="xs:-mt-4 border-b-2 border-gray-500 opacity-50"></div>
+        <MiddleContainer/> {/* Added margin for spacing */}
+        <Footer/>
       </div>
     </>
   );

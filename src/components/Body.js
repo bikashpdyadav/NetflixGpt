@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Browse from "./Browse";
 import ItemDetails from "./ItemDetails";
@@ -16,7 +15,6 @@ import PayWall from "./PayWall/PayWall";
 import Movie from "./Movie";
 import HelpSetting from "./HelpSetting/HelpSetting";
 import MenuBar from "./MenuBar";
-import App from "../App";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -25,7 +23,7 @@ const Body = () => {
       element: <Login />,
     },
     {
-      path: "/search",
+      path: "browse/search",
       element: <SearchContainer />,
     },
     {

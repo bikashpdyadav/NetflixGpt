@@ -1,18 +1,26 @@
 import React from "react";
 import Footer from "../Footer";
 import Sidebar from "../Sidebar";
+import MenuBar from "../MenuBar"
+import { useSelector } from "react-redux";
 
 const HelpSetting = () => {
+  const userDetails = useSelector((store) => store.user.userDetails);
   return (
     <>
-      <Sidebar />
-
+      <div className="xs:hidden lg:block">
+        <Sidebar />
+      </div>
+      <div className="xs:block lg:hidden">
+        <MenuBar />
+      </div>
       <div className="bg-gradient-to-r from-black via-stone-800 to-gray-500 gap-24 flex flex-col">
-        <div className="flex flex-row bg-gradient-to-r from-black via-stone-800 to-gray-500">
-          <div className="text-white flex flex-col w-full  gap-8 p-8 pl-20">
+        <div className="flex flex-col md:flex-row bg-gradient-to-r from-black via-stone-800 to-gray-500">
+          <div className="text-white flex flex-col w-full gap-8 p-8 md:p-12 pl-6 md:pl-20">
             <h1 className="text-2xl font-bold">Help & Settings</h1>
             <div className="flex flex-col gap-4">
-              <div className=" border-white border w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
+
+              <div className="border-white border w-full md:w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -28,15 +36,12 @@ const HelpSetting = () => {
                   />
                 </svg>
                 <div>
-                  <h1 className=" font-bold opacity-80">
-                    Subscription & Devices
-                  </h1>
-                  <h1 className=" text-gray-500">
-                    Manage Subscriptions & Devices
-                  </h1>
+                  <h1 className="font-bold opacity-80">Subscription & Devices</h1>
+                  <h1 className="text-gray-500">Manage Subscriptions & Devices</h1>
                 </div>
               </div>
-              <div className=" border-white border w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
+
+              <div className="border-white border w-full md:w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -53,11 +58,12 @@ const HelpSetting = () => {
                 </svg>
 
                 <div>
-                  <h1 className=" font-bold opacity-80">Parental Controls</h1>
-                  <h1 className=" text-gray-500">Parental Lock</h1>
+                  <h1 className="font-bold opacity-80">Parental Controls</h1>
+                  <h1 className="text-gray-500">Parental Lock</h1>
                 </div>
               </div>
-              <div className=" border-white border w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
+
+              <div className="border-white border w-full md:w-[45%] rounded-lg p-2 flex flex-row gap-4 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -74,42 +80,46 @@ const HelpSetting = () => {
                 </svg>
 
                 <div>
-                  <h1 className=" font-bold opacity-80">Help & Support</h1>
-                  <h1 className=" text-gray-500">Help Center</h1>
+                  <h1 className="font-bold opacity-80">Help & Support</h1>
+                  <h1 className="text-gray-500">Help Center</h1>
                 </div>
               </div>
             </div>
           </div>
-          <div className="text-white w-full flex flex-col  gap-12 pr-16 pt-8">
-            <div className="flex flex-row justify-between">
+
+          <div className="text-white w-full flex flex-col gap-12 px-6 md:px-16 p-8">
+            <div className="flex flex-row items-center justify-between">
               <h1 className="text-2xl font-bold">Subscribe to enjoy</h1>
-              <button className="bg-blue-500 p-4">Subscribe</button>
+              <button className="bg-blue-500 px-4 py-2 rounded-md shadow-md text-white font-semibold hover:bg-blue-600 transition duration-200 ease-in-out">Subscribe</button>
             </div>
-            <div className="flex flex-row justify-between">
+
+            <div className="flex flex-row items-center justify-between">
               <div>
                 <h1 className="text-2xl font-bold">Registered Email</h1>
-                <h1 className="font-semibold text-base">7457845875</h1>
+                <h1 className="font-semibold text-base">{userDetails?.email}</h1>
               </div>
               <button className="font-bold text-lg">Update</button>
             </div>
-            <h1 className=" text-xl font-bold">This device</h1>
-            <div className="flex flex-row justify-between">
+
+            <h1 className="text-xl font-bold">This device</h1>
+            <div className="flex flex-row items-center justify-between">
               <h1 className="text-2xl font-bold">Web Browser</h1>
-              <button className="bg-blue-500 p-4">Log Out</button>
+              <button className="bg-blue-500 px-4 py-2 rounded-md shadow-md text-white font-semibold hover:bg-blue-600 transition duration-200 ease-in-out">Log Out</button>
             </div>
-            <h1 className=" text-xl font-bold">Other devices</h1>
+
+            <h1 className="text-xl font-bold">Other devices</h1>
             <div className="flex flex-row justify-between">
               <div>
                 <h1 className="text-2xl font-bold">Android Phone/Tablet</h1>
-                <button>Last Used:Yesterday</button>
               </div>
-              <button className="bg-blue-500 p-4">Log Out</button>
+              <button className="bg-blue-500 px-4 py-2 rounded-md shadow-md text-white font-semibold hover:bg-blue-600 transition duration-200 ease-in-out">Log Out</button>
             </div>
           </div>
         </div>
-        <div className="p-16">
-          <Footer />
-        </div>
+      </div>
+
+      <div className="w-full xs:p-4 sm:p-8 lg:p-16 bg-gradient-to-r from-black via-gray-700 to-gray-900 flex flex-col gap-16">
+        <Footer />
       </div>
     </>
   );

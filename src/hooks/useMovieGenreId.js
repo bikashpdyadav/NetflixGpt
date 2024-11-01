@@ -12,7 +12,7 @@ const useMovieGenreId = () => {
     );
     const data = await response.json();
     dispatch(getMovieGenreId(data));
-    console.log(data, "useMovieGenre");
+    //console.log(data, "useMovieGenre");
   };
   useEffect(() => {
     getGenreId();

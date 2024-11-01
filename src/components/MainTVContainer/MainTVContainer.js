@@ -11,11 +11,10 @@ const MainTVContainer = () => {
   if (tv.length === 0) return;
   const mainTV = tv[2];
   const { original_name, overview, id } = mainTV;
-
+  //console.log(tv);
   return (
     <div className="flex flex-col">
       <VideoTitle title={original_name} overview={overview} />
-
       <VideoContainer tvId={id} />
     </div>
   );

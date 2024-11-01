@@ -12,7 +12,7 @@ const useTVPopular = () => {
       API_OPTIONS
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     dispatch(addPopular(data.results));
   };
 

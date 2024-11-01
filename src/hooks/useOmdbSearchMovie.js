@@ -12,7 +12,7 @@ const useOmdbSearchMovie = () => {
     const data = await response.json();
  
     dispatch(omdbSearchMovieList(data.Search));
-    console.log(data);
+    //console.log(data);
   };
   useEffect(() => {
     getOmdbSearchMovies();

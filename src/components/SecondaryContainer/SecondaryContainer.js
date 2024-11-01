@@ -10,38 +10,38 @@ const SecondaryContainer = () => {
   );
 
   return (
-    <div className="bg-black">
-      {movieByGenre?.length !== 0 ? (
-        <div className="relative lg:-mt-80 z-40 xs:mt-4">
+    <div className="bg-black lg:pt-80">
+      <div className="relative xs:mt-4 lg:-mt-80">
+        {movieByGenre?.length !== 0 ? (
           <MovieList
-            title={currentMovieGenre?.selectedGenreName + "Movies"}
+            title={currentMovieGenre?.selectedGenreName + " Movies"}
             movies={movieByGenre}
           />
-        </div>
-      ) : (
-        <div className="relative lg:-mt-80 z-40 xs:mt-4">
-          <MovieList
-            title={"Now Playing"}
-            movies={movieStore.nowPlayingMovieList}
-          />
-          <MovieList
-            title={"Trending"}
-            movies={movieStore.trendingMovieList}
-          />
-          <MovieList
-            title={"Popular Movies"}
-            movies={movieStore.popularMovieList}
-          />
-          <MovieList
-            title={"Top Rated"}
-            movies={movieStore.topRatedMovieList}
-          />
-          <MovieList
-            title={"Upcoming"}
-            movies={movieStore.upcomingMovieList}
-          />
-        </div>
-      )}
+        ) : (
+          <>
+            <MovieList
+              title={"Now Playing"}
+              movies={movieStore.nowPlayingMovieList}
+            />
+            <MovieList
+              title={"Trending"}
+              movies={movieStore.trendingMovieList}
+            />
+            <MovieList
+              title={"Popular Movies"}
+              movies={movieStore.popularMovieList}
+            />
+            <MovieList
+              title={"Top Rated"}
+              movies={movieStore.topRatedMovieList}
+            />
+            <MovieList
+              title={"Upcoming"}
+              movies={movieStore.upcomingMovieList}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

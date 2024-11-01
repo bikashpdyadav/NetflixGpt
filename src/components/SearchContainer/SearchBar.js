@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import useSearchMovie from "../../hooks/useSearchMovie";
 import { searchMovie } from "../../utils/searchSlice";
 import useOmdbSearchMovie from "../../hooks/useOmdbSearchMovie";
-import useMovieDetails from "../../hooks/useMovieDetails";
 
 const SearchBar = () => {
   const currentLanguage = useSelector((store) => store.config.currentLanguage);
@@ -16,31 +15,31 @@ const SearchBar = () => {
   const handleGPTSearch = () => {
     dispatch(searchMovie(searchText.current.value));
   };
+
   return (
     <>
-      <div className="absolute -z-10 w-screen">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/0efe6360-4f6d-4b10-beb6-81e0762cfe81/IN-en-20231030-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt="logo"
-        />
-      </div>
-      <div className="pt-[20%] flex justify-center">
+      <div className="absolute inset-0 -z-10 w-full h-full bg-cover bg-center bg-no-repeat custom-bg" />
+      <div className="pt-32 flex justify-center">
         <form
-          className="xs:flex xs:flex-col xs:gap-2 xs:items-center xs:w-4/5 lg:w-1/2 lg:bg-black lg:grid lg:grid-cols-12"
+          className="w-full max-w-2xl m-4 p-6 flex items-center justify-center bg-black bg-opacity-70 rounded-lg shadow-lg"
           onSubmit={(e) => e.preventDefault()}
         >
-          <input
-            ref={searchText}
-            className="xs:p-2 xs:mt-4 lg:p-4 lg:m-4 lg:col-span-9"
-            type="text"
-            placeholder={lang[currentLanguage].gptSearchPlaceholder}
-          />
-          <button
-            className="bg-red-700 xs:w-20 lg:w-32 xs:p-1 lg:px-6 lg:py-2 rounded-lg lg:col-span-3 lg:m-4"
-            onClick={handleGPTSearch}
-          >
-            {lang[currentLanguage].Search}
-          </button>
+          <div className="w-full flex relative">
+            <input
+              ref={searchText}
+              className="w-full p-4 text-white bg-gray-800 rounded-l-xl focus:outline-none focus:ring-2 focus:ring-red-900 transition-all duration-200 ease-in"
+              type="text"
+              placeholder={lang[currentLanguage].gptSearchPlaceholder}
+              aria-label="Search input for GPT"
+            />
+            <button
+              className="p-4 bg-red-700 text-white rounded-r-xl hover:bg-red-800 transition-all duration-200 ease-in font-semibold"
+              onClick={handleGPTSearch}
+              aria-label="Search"
+            >
+              {lang[currentLanguage].Search}
+            </button>
+          </div>
         </form>
       </div>
     </>
