@@ -100,7 +100,7 @@ const Header = () => {
         <select
           name="language"
           id="language"
-          className="hidden lg:block h-8 bg-blue-700 text-white rounded-md cursor-pointer"
+          className="hidden lg:block h-8 px-4 bg-blue-700 text-white rounded-md cursor-pointer"
           onChange={handleLanguageChange}
         >
           {SUPPORTED_LANGUAGE.map((lang) => (

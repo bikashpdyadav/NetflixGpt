@@ -34,10 +34,23 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          Swal.fire({
+            title: "Success",
+            text: "Account created successfully!",
+            icon: "success",
+            timer: 2000,
+            showConfirmButton: false,
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          // Check for email already in use
+          if (errorCode === "auth/email-already-in-use") {
+            setErrorMessage({ emailErrorMessage: "Email is already in use." });
+          } else {
+            setErrorMessage({ emailErrorMessage: errorMessage });
+          }
         });
     } else {
       signInWithEmailAndPassword(
@@ -112,7 +125,7 @@ const Login = () => {
         />
 
         {errorMessage?.emailErrorMessage && (
-          <p className="text-red-500 w-full text-xs flex items-center justify-center">
+          <p className="text-red-500 w-5/6 text-lg flex items-center justify-center">
             {errorMessage?.emailErrorMessage}
           </p>
         )}
@@ -135,7 +148,7 @@ const Login = () => {
         </div>
 
         {errorMessage?.passwordErrorMessage && (
-          <p className="text-red-500 w-full text-xs flex items-center justify-center">
+          <p className="text-red-500 w-5/6 text-lg flex items-center justify-center">
             {errorMessage?.passwordErrorMessage}
           </p>
         )}
