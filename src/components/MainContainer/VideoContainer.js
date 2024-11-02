@@ -14,9 +14,9 @@ const VideoContainer = ({ movieId }) => {
   //   setCurrentLocation(location.pathname);
   // }, [location]);
   return (
-    <div className="w-full xs:order-1 flex justify-center bg-black">
+    <div>
       <iframe
-        className="w-full h-[56vw] lg:h-[36vw] aspect-video max-w-full" // Added max-w-full
+        className="w-full h-[56vw] lg:h-[36vw] aspect-video max-w-full"
         src={`https://www.youtube.com/embed/${trailerKey}?&autoplay=1&mute=1`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

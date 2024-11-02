@@ -22,15 +22,12 @@ const TVList = () => {
   useTVTopRated();
 
   return (
-    <div className="bg-black">
-      <div className="relative flex flex-col space-y-6"> {/* Adds vertical spacing */}
-        <MovieList title={"Airing Today"} movies={tvStore.tvAiringToday} />
-        <MovieList title={"On the Air"} movies={tvStore.onTheAir} />
-        <MovieList title={"Popular TV Series"} movies={tvStore.popular} />
-        <MovieList title={"Top Rated"} movies={tvStore.topRated} />
-      </div>
+    <div className="relative flex flex-col space-y-6 lg:pl-10"> {/* Adds vertical spacing */}
+      <MovieList title={"Airing Today"} movies={tvStore.tvAiringToday} />
+      <MovieList title={"On the Air"} movies={tvStore.onTheAir} />
+      <MovieList title={"Popular TV Series"} movies={tvStore.popular} />
+      <MovieList title={"Top Rated"} movies={tvStore.topRated} />
     </div>
-
   );
 };
 

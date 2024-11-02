@@ -12,13 +12,12 @@ const MainContainer = () => {
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="flex flex-col mb-16"> {/* Add margin-bottom here */}
+    <div className="flex flex-col p-4">
+      <VideoContainer movieId={id} />
       <VideoTitle
         title={lang?.title ? lang?.title : original_title}
         overview={overview}
       />
-
-      <VideoContainer movieId={id} />
     </div>
   );
 };

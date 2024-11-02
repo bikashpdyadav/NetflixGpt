@@ -2,7 +2,6 @@ import React from "react";
 import VideoTitle from "./VideoTitle";
 import VideoContainer from "./VideoContainer";
 import { useSelector } from "react-redux";
-import Sidebar from "../Sidebar";
 
 const MainTVContainer = () => {
   const movie = useSelector((store) => store.movie?.nowPlayingMovieList);
@@ -13,9 +12,9 @@ const MainTVContainer = () => {
   const { original_name, overview, id } = mainTV;
   //console.log(tv);
   return (
-    <div className="flex flex-col">
-      <VideoTitle title={original_name} overview={overview} />
+    <div className="flex flex-col p-4">
       <VideoContainer tvId={id} />
+      <VideoTitle title={original_name} overview={overview} />
     </div>
   );
 };

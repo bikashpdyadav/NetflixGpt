@@ -8,13 +8,14 @@ import MenuBar from "../MenuBar";
 const SearchContainer = () => {
   return (
     <>
+      <Header />
       <div className="xs:hidden lg:block">
         <Sidebar />
       </div>
       <div className="xs:block lg:hidden">
         <MenuBar />
       </div>
-      <Header />
+      
       <SearchBar />
       <MovieSuggestion />
     </>

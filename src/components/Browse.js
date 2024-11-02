@@ -8,7 +8,6 @@ import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import useTrendingMovie from "../hooks/useTrendingMovie";
 import useMovieGenre from "../hooks/useMovieGenre";
 import useMovieGenreId from "../hooks/useMovieGenreId";
-import SearchContainer from "./SearchContainer/SearchContainer";
 import { useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
 import TVList from "./TVContainer/TVList";
@@ -31,7 +30,7 @@ const Browse = () => {
       <Header />
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar visible on larger screens */}
-        <div className="hidden lg:block w-1/4">
+        <div className="hidden lg:block">
           <Sidebar />
         </div>
 
@@ -41,22 +40,11 @@ const Browse = () => {
         </div>
 
         {/* Main content area */}
-        <div className="flex-1 bg-black lg:p-4 sm:p-6 lg:ml-6">
+        <div className="bg-black sm:mb-0 mb-8">
           <MainContainer />
-          <div className="mt-8 lg:mt-16">
-            <SecondaryContainer />
-          </div>
-          <div className="my-8">
-            <TVList />
-          </div>
+          <SecondaryContainer />
+          <TVList />
         </div>
-
-        {/* Conditionally render SearchContainer */}
-        {toggleSearch && (
-          <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 z-50 flex justify-center items-center">
-            <SearchContainer />
-          </div>
-        )}
       </div>
     </>
   );

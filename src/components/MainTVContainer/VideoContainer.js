@@ -16,13 +16,13 @@ const VideoContainer = ({ tvId }) => {
   // }
 
   return (
-    <div className="w-screen xs:order-1">
+    <div>
       <iframe
-        className="w-full aspect-video" // Changed to w-full for full responsiveness
+        className="w-full h-[56vw] lg:h-[36vw] aspect-video max-w-full"
         src={`https://www.youtube.com/embed/${trailerKey}?&autoplay=1&mute=1`}
-        title="Video trailer for TV series"
+        title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      ></iframe>
+      />
     </div>
   );
 };

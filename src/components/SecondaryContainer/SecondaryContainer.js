@@ -10,8 +10,8 @@ const SecondaryContainer = () => {
   );
 
   return (
-    <div className="bg-black lg:pt-80">
-      <div className="relative xs:mt-4 lg:-mt-80">
+    <div className="lg:pt-80">
+      <div className="relative xs:mt-4 lg:-mt-80 lg:pl-10">
         {movieByGenre?.length !== 0 ? (
           <MovieList
             title={currentMovieGenre?.selectedGenreName + " Movies"}

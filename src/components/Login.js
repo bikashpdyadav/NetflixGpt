@@ -11,9 +11,10 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-
   const email = useRef(null);
   const password = useRef(null);
+  const [showPassword, setShowPassword] = useState(false);
+
   const handleSignInForm = (e) => {
     e.preventDefault();
     const { success, obj } = checkValidData(
@@ -80,18 +81,18 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
+      <div className="absolute inset-0">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/ab4b0b22-2ddf-4d48-ae88-c201ae0267e2/0efe6360-4f6d-4b10-beb6-81e0762cfe81/IN-en-20231030-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
-          alt="logo"
-          className="w-screen h-screen"
+          alt="background"
+          className="w-full h-full object-cover"
         />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-2/5 absolute px-10 py-8 bg-black mx-auto left-0 right-0 mt-28 text-white rounded-lg bg-opacity-80"
+        className="absolute flex flex-col items-center justify-center bg-black bg-opacity-80 rounded-lg text-white px-6 py-8 mx-4 sm:mx-auto sm:w-4/5 md:w-3/5 lg:w-2/5 mt-20 sm:mt-28 left-0 right-0"
       >
-        <h1 className="font-bold text-4xl my-4 py-4">
+        <h1 className="font-bold text-3xl sm:text-4xl my-4 py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
@@ -99,7 +100,7 @@ const Login = () => {
           <input
             type="text"
             placeholder="Full Name"
-            className="my-4 p-4 w-full bg-gray-800 rounded-lg"
+            className="my-4 p-3 sm:p-4 w-5/6 bg-gray-800 rounded-lg"
           />
         )}
 
@@ -107,7 +108,7 @@ const Login = () => {
           type="email"
           ref={email}
           placeholder="Email Address"
-          className="my-4 p-4 w-full bg-gray-800 rounded-lg"
+          className="my-4 p-3 sm:p-4 w-5/6 bg-gray-800 rounded-lg"
         />
 
         {errorMessage?.emailErrorMessage && (
@@ -116,13 +117,22 @@ const Login = () => {
           </p>
         )}
 
-        <input
-          className="my-4 p-4 w-full bg-gray-800 rounded-lg"
-          ref={password}
-          type="password"
-          placeholder="Password"
-          autoComplete="new-password"
-        />
+        <div className="relative w-full flex items-center justify-center">
+          <input
+            className="my-4 p-4 w-5/6 bg-gray-800 text-white rounded-lg placeholder-gray-400"
+            ref={password}
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            autoComplete="new-password"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+            className="absolute right-10 lg:right-14 top-[35%] text-white"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
 
         {errorMessage?.passwordErrorMessage && (
           <p className="text-red-500 w-full text-xs flex items-center justify-center">
@@ -132,13 +142,13 @@ const Login = () => {
 
         <button
           onClick={handleSignInForm}
-          className="my-4 p-4 bg-red-700 w-full rounded-lg text-lg"
+          className="my-4 p-3 sm:p-4 bg-red-700 w-5/6 rounded-lg text-lg"
         >
           Submit
         </button>
 
         <p
-          className="my-4 py-4 cursor-pointer"
+          className="my-4 py-4 cursor-pointer text-center"
           onClick={handleToggleSignIn}
         >
           {isSignInForm
@@ -150,3 +160,4 @@ const Login = () => {
   );
 };
 export default Login;
+

@@ -22,7 +22,7 @@ const TVContainer = () => {
   useTrendingMovie();
 
   return (
-    <div className="xs:bg-black">
+    <>
       <Header />
       {/* Sidebar for larger screens */}
       <div className="xs:hidden lg:block">
@@ -32,11 +32,12 @@ const TVContainer = () => {
       <div className="xs:block lg:hidden">
         <MenuBar />
       </div>
-      <div className="flex flex-col lg:pl-8 sm:mb-0 mb-8">
-        <MainTVContainer /> {/* Margin for spacing */}
+      
+      <div className="bg-black sm:mb-0 mb-8">
+        <MainTVContainer />
         <TVList />
       </div>
-    </div>
+    </>
   );
 };
 

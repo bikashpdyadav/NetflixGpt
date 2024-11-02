@@ -6,10 +6,10 @@ const MovieSuggestion = () => {
   const omdbSearchMovieList = useSelector(
     (store) => store.search.omdbSearchMovieList
   );
-
+  //console.log(omdbSearchMovieList,"hi")
   return (
-    <div className="bg-gray-950 w-full min-h-screen p-8 lg:p-8">
-      <div className="container mx-auto">
+    <div className="bg-gray-950 pt-10">
+      <div className="relative xs:mt-4 lg:pl-10">
         <MovieList title="Movie Results (TMDB)" movies={searchMovieList} />
         <MovieList title="Movie Results (OMDB)" omdbMovies={omdbSearchMovieList} />
       </div>
