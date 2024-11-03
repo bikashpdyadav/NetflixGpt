@@ -12,7 +12,7 @@ const MainContainer = () => {
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-8">
       <VideoContainer movieId={id} />
       <VideoTitle
         title={lang?.title ? lang?.title : original_title}

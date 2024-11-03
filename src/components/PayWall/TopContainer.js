@@ -46,34 +46,36 @@ const TopContainer = () => {
 
             <div className="flex flex-row justify-between">
               <h3>Number of Devices that Can Be Logged In</h3>
-              <div className="flex gap-12">
-                <span className="ml-4">2</span>
-                <span className="ml-4">4</span>
+              <div className="flex items-center gap-4">
+                <span className="p-2">2</span>
+                <span className="p-2">4</span>
               </div>
             </div>
 
             <div className="flex flex-row justify-between">
               <h3>Max Video Quality</h3>
-              <div className="flex gap-12">
-                <div>
+              <div className="flex items-center gap-4">
+                <div className="p-2">
                   <h4>Full HD</h4>
                   <h4>1080P</h4>
                 </div>
-                <div>
+                <div className="p-2">
                   <h4>4K</h4>
                   <h4>2160P</h4>
                 </div>
               </div>
             </div>
 
-            <div className="flex flex-col">
+            <div className="flex flex-row  justify-between">
               <h3>Max Audio Quality</h3>
+              <div>
               <p className="text-gray-400">
                 Atmos available on select titles only
               </p>
-              <div className="flex gap-12">
+              <div className="flex items-center justify-center gap-4">
                 <h4 className="ml-4">Dolby Atmos</h4>
                 <h4 className="ml-4">Dolby Atmos</h4>
+              </div>
               </div>
             </div>
           </div>

@@ -33,7 +33,7 @@ const TVContainer = () => {
         <MenuBar />
       </div>
       
-      <div className="bg-black sm:mb-0 mb-8">
+      <div className="bg-black lg:mb-0 mb-8">
         <MainTVContainer />
         <TVList />
       </div>

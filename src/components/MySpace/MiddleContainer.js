@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const MiddleContainer = () => {
   const userDetails = useSelector((store) => store.user.userDetails);
   return (
-    <div className="xs:-mt-8 flex flex-col gap-8">
+    <div className="xs:-mt-8 flex flex-col py-12 gap-8">
       <div className="text-white font-bold ml-4 flex flex-col gap-6 justify-center">
         <div className="flex flex-row justify-between">
           <h1 className=" text-2xl opacity-70">Profiles</h1>
