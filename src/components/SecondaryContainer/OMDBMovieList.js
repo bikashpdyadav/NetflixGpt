@@ -1,9 +1,10 @@
 import React from "react";
-import MovieCard from "./MovieCard";
+import { OMDBMovieCard } from "./MovieCard";
 import { Link } from "react-router-dom";
 
-const MovieList = ({ title, movies }) => {
-  console.log(`MovieList - ${title}:`, { movies });
+const OMDBMovieList = ({ title, omdbMovies }) => {
+  console.log("OMDBMovieList - Title:", title);
+  console.log("OMDBMovieList - Movies:", omdbMovies);
   
   return (
     <div className="w-screen mb-6"> 
@@ -11,32 +12,35 @@ const MovieList = ({ title, movies }) => {
         {title}
       </h1>
       
-      {movies && movies.length > 0 ? (
+      {omdbMovies && omdbMovies.length > 0 ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0 overflow-hidden">
           <div className="flex xs:gap-5 lg:gap-6 overflow-x-auto whitespace-nowrap">
-            {movies.map((movie) => (
-              <Link to={`/browse/search/${movie?.id}`} key={movie.id}>
-                <MovieCard 
-                  poster_path={movie.poster_path} 
-                  className="xs:w-32 lg:w-40"
-                />
-              </Link>
-            ))}
+            {omdbMovies.map((movie) => {
+              console.log("OMDB Movie in List:", movie);
+              return (
+                <Link to={`/browse/movie/details/${movie?.imdbID}`} key={movie.imdbID}>
+                  <OMDBMovieCard 
+                    poster_path={movie.Poster} 
+                    className="xs:w-32 lg:w-40"
+                  />
+                </Link>
+              );
+            })}
           </div>
         </div>
-      ) : movies === null ? (
+      ) : omdbMovies === null ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0">
           <div className="text-center">
             <div className="text-6xl mb-4">🔍</div>
-            <p className="text-gray-400 text-lg">Search for movies to see TMDB results</p>
-            <p className="text-gray-500 text-sm mt-2">TMDB provides comprehensive movie database</p>
+            <p className="text-gray-400 text-lg">Search for movies to see OMDB results</p>
+            <p className="text-gray-500 text-sm mt-2">OMDB provides additional movie information</p>
           </div>
         </div>
-      ) : movies && movies.length === 0 ? (
+      ) : omdbMovies && omdbMovies.length === 0 ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0">
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
-            <p className="text-gray-400 text-lg">No TMDB movies found for this search</p>
+            <p className="text-gray-400 text-lg">No OMDB movies found for this search</p>
             <p className="text-gray-500 text-sm mt-2">Try a different search term</p>
           </div>
         </div>
@@ -44,7 +48,7 @@ const MovieList = ({ title, movies }) => {
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0">
           <div className="text-center">
             <div className="text-6xl mb-4">⏳</div>
-            <p className="text-gray-400 text-lg">Loading TMDB results...</p>
+            <p className="text-gray-400 text-lg">Loading OMDB results...</p>
           </div>
         </div>
       )}
@@ -52,4 +56,4 @@ const MovieList = ({ title, movies }) => {
   );
 };
 
-export default MovieList;
+export default OMDBMovieList;

@@ -23,17 +23,7 @@ const searchSlice = createSlice({
       state.searchMovieList = action.payload;
     },
     omdbSearchMovieList: (state, action) => {
-      if (action.payload == null) {
-        return {
-          ...state,
-          omdbSearchMovieList: null,
-        };
-      }
-
-      return {
-        ...state,
-        omdbSearchMovieList: action.payload,
-      };
+      state.omdbSearchMovieList = action.payload;
     },
     movieIdDetails: (state, action) => {
       state.movieIdDetails = action.payload;

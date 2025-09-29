@@ -6,7 +6,7 @@ const useMovieCastDetails = () => {
   const dispatch = useDispatch();
   const getMovieCastDetails = async () => {
     const response = await fetch(
-      "https://www.omdbapi.com/?i=tt0848228&apikey=a6fc1c65"
+      "https://www.omdbapi.com/?i=tt3896198&apikey=a6fc1c65"
     );
     const data = await response.json();
     dispatch(movieCastDetail(data));

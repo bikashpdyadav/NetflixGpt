@@ -22,16 +22,26 @@ const ItemDetails = () => {
     dispatch(movieIdDetails(id));
   }, [id]);
 
-  // let trailer = movieList?.results?.filter(
-  //   (movieTrailer) =>
-  //     movieTrailer.type === "Trailer" &&
-  //     movieTrailer.name === "Official Trailer"
-  // );
-  // console.log(trailer);
+  // Check if we have movie details
+  if (!movieDetailsId) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-950">
+        <h1 className="text-white text-2xl">Loading movie details...</h1>
+      </div>
+    );
+  }
 
-  // if (trailer?.length == 0) return <h1>No more Details</h1>;
-  const officialTrailer = movieList?.results?.[0]?.key;
-  if (!officialTrailer) return <h1>No more Details</h1>;
+  // Get the first available trailer (official or any trailer)
+  const officialTrailer = movieList?.results?.find(
+    (trailer) => trailer.type === "Trailer" && trailer.name === "Official Trailer"
+  )?.key || movieList?.results?.find(
+    (trailer) => trailer.type === "Trailer"
+  )?.key;
+  
+  // Debug logging
+  console.log("Movie Details ID:", movieDetailsId);
+  console.log("Trailer List:", movieList?.results);
+  console.log("Official Trailer Key:", officialTrailer);
   return (
     <div className="lg:mb-0 mb-12">
       <div className="xs:hidden lg:block">
@@ -44,13 +54,23 @@ const ItemDetails = () => {
       <div className="flex flex-col items-center bg-gray-950 p-6 space-y-6 xs:flex-wrap">
         {/* Trailer and Movie Details Section */}
         <div className="flex flex-col md:flex-row md:space-x-4 w-full md:w-[90%] lg:w-[80%] p-6 bg-gray-900 rounded-lg shadow-lg">
-          <iframe
-            className="w-full md:w-2/3 aspect-video rounded-lg"
-            src={`https://www.youtube.com/embed/${officialTrailer}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+          {officialTrailer ? (
+            <iframe
+              className="w-full md:w-2/3 aspect-video rounded-lg"
+              src={`https://www.youtube.com/embed/${officialTrailer}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <div className="w-full md:w-2/3 aspect-video rounded-lg bg-gray-800 flex items-center justify-center">
+              <div className="text-center text-white">
+                <div className="text-6xl mb-4">🎬</div>
+                <h3 className="text-xl font-semibold mb-2">No Trailer Available</h3>
+                <p className="text-gray-400">Trailer not found for this movie</p>
+              </div>
+            </div>
+          )}
 
           <div className="flex flex-col p-4 w-full md:w-1/3 space-y-4 bg-gray-800 rounded-lg mt-4 md:mt-0">
             <div className="flex flex-col flex-wrap md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-4">
@@ -79,7 +99,7 @@ const ItemDetails = () => {
 
             <div className="space-y-2">
               <h3 className="text-white text-lg font-semibold">
-                Official Trailer
+                {officialTrailer ? "Official Trailer" : "Movie Overview"}
               </h3>
               <p className="text-gray-300 text-sm">
                 {movieDetailsId?.overview}

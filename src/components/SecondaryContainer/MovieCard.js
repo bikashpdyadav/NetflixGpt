@@ -20,6 +20,8 @@ const MovieCard = ({ poster_path }) => {
 export default MovieCard;
 
 export const OMDBMovieCard = ({ poster_path }) => {
+  console.log("OMDBMovieCard received poster_path:", poster_path);
+  
   if (!poster_path || poster_path === "N/A")
     return (
       <div className="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64">
@@ -34,7 +36,7 @@ export const OMDBMovieCard = ({ poster_path }) => {
       <div className="relative w-full overflow-hidden rounded-lg shadow-md">
         <img
           src={poster_path}
-          alt="nowPlayingMoviesImages"
+          alt="OMDB Movie Poster"
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
       </div>
