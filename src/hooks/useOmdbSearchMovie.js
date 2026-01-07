@@ -16,7 +16,7 @@ const useOmdbSearchMovie = () => {
       // URL encode the search text to handle spaces and special characters
       const encodedSearchText = encodeURIComponent(movieSearchText);
       const response = await fetch(
-        `https://www.omdbapi.com/?s=${encodedSearchText}&apikey=a6fc1c65`
+        `https://www.omdbapi.com/?s=${encodedSearchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
       );
       const data = await response.json();
       

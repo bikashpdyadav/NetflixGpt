@@ -2,18 +2,19 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YzQ3ZmQ1NWZhZTQ5MzhiNzBlOWNmYWM1ZDNlMGNhOCIsInN1YiI6IjY1NGQ0YzQ3YjE4ZjMyMDBhYzNmMDQxMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.mxP1Lq7JkXdnIxKJHMK1YD96S8Z7mHNVjDCRIZ3qeBM",
+    Authorization: `Bearer ${process.env.REACT_APP_TMDB_API_KEY}`,
   },
 };
 
 export const RAPID_API = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "eaab9cd952msh5b38547f03b5924p1417edjsncf5bf10d246b",
+    "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
     "X-RapidAPI-Host": "netflix54.p.rapidapi.com",
   },
 };
+
+export const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export const IMAGES_URL = "https://image.tmdb.org/t/p/w500/";
 export const API_URL = "https://api.themoviedb.org/3/movie/";
