@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 const OMDBMovieList = ({ title, omdbMovies }) => {
   console.log("OMDBMovieList - Title:", title);
   console.log("OMDBMovieList - Movies:", omdbMovies);
+  console.log("OMDBMovieList - Is Array:", Array.isArray(omdbMovies));
+  console.log("OMDBMovieList - Length:", omdbMovies?.length);
   
   return (
     <div className="w-screen mb-6"> 
@@ -12,13 +14,18 @@ const OMDBMovieList = ({ title, omdbMovies }) => {
         {title}
       </h1>
       
-      {omdbMovies && omdbMovies.length > 0 ? (
+      {Array.isArray(omdbMovies) && omdbMovies.length > 0 ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0 overflow-hidden">
           <div className="flex xs:gap-5 lg:gap-6 overflow-x-auto whitespace-nowrap">
             {omdbMovies.map((movie) => {
               console.log("OMDB Movie in List:", movie);
+              // Validate movie has required fields
+              if (!movie || !movie.imdbID) {
+                console.warn("Invalid OMDB movie object:", movie);
+                return null;
+              }
               return (
-                <Link to={`/browse/movie/details/${movie?.imdbID}`} key={movie.imdbID}>
+                <Link to={`/browse/movie/details/${movie.imdbID}`} key={movie.imdbID}>
                   <OMDBMovieCard 
                     poster_path={movie.Poster} 
                     className="xs:w-32 lg:w-40"
@@ -28,7 +35,7 @@ const OMDBMovieList = ({ title, omdbMovies }) => {
             })}
           </div>
         </div>
-      ) : omdbMovies === null ? (
+      ) : omdbMovies === null || omdbMovies === undefined ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0">
           <div className="text-center">
             <div className="text-6xl mb-4">🔍</div>
@@ -36,7 +43,7 @@ const OMDBMovieList = ({ title, omdbMovies }) => {
             <p className="text-gray-500 text-sm mt-2">OMDB provides additional movie information</p>
           </div>
         </div>
-      ) : omdbMovies && omdbMovies.length === 0 ? (
+      ) : Array.isArray(omdbMovies) && omdbMovies.length === 0 ? (
         <div className="flex items-center justify-center xs:p-3 lg:p-6 xs:ml-4 lg:ml-0">
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
