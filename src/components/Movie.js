@@ -23,9 +23,9 @@ const Movie = () => {
       <div className="xs:block lg:hidden">
         <MenuBar />
       </div>
-      <div className="xs:bg-black mb-8 lg:mb-0">
+      <div className="xs:bg-black mb-8 lg:mb-0 w-full min-w-0 overflow-x-hidden">
         <MainContainer />
-        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12">
+        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 min-w-0 w-full">
           <SecondaryContainer />
         </div>
       </div>

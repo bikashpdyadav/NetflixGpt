@@ -14,7 +14,7 @@ const TVList = () => {
   useTVTopRated();
 
   return (
-    <div className="flex flex-col gap-10 w-full">
+    <div className="flex flex-col gap-10 w-full min-w-0">
       <MovieList title={"Airing Today"} movies={tvStore.tvAiringToday} />
       <MovieList title={"On the Air"} movies={tvStore.onTheAir} />
       <MovieList title={"Popular TV Series"} movies={tvStore.popular} />

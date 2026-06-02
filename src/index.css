@@ -29,4 +29,32 @@
   scrollbar-width: none; /* Firefox */
 }
 
+.movie-row-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #1a1a1a;
+  padding-bottom: 0.5rem;
+}
+
+.movie-row-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movie-row-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.movie-row-scroll::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.movie-row-scroll::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
   

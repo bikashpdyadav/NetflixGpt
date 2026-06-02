@@ -28,7 +28,7 @@ const Browse = () => {
   return (
     <>
       <Header />
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row w-full overflow-x-hidden">
         {/* Sidebar visible on larger screens */}
         <div className="hidden lg:block">
           <Sidebar />
@@ -40,9 +40,9 @@ const Browse = () => {
         </div>
 
         {/* Main content area */}
-        <div className="bg-black lg:mb-0 mb-8">
+        <div className="bg-black lg:mb-0 mb-8 flex-1 min-w-0 w-full overflow-x-hidden">
           <MainContainer />
-          <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 space-y-10">
+          <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 space-y-10 min-w-0 w-full">
             <SecondaryContainer />
             <TVList />
           </div>

@@ -33,9 +33,9 @@ const TVContainer = () => {
         <MenuBar />
       </div>
       
-      <div className="bg-black lg:mb-0 mb-8">
+      <div className="bg-black lg:mb-0 mb-8 w-full min-w-0 overflow-x-hidden">
         <MainTVContainer />
-        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12">
+        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 min-w-0 w-full">
           <TVList />
         </div>
       </div>

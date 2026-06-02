@@ -1,11 +1,11 @@
 import React from "react";
 import { IMAGES_URL } from "../../utils/constants";
 
-const MovieCard = ({ poster_path }) => {
+const MovieCard = ({ poster_path, className = "w-32 sm:w-36 lg:w-40" }) => {
   if (!poster_path) return null;
 
   return (
-    <div className="w-32 sm:w-40 md:w-48 lg:w-56 xl:w-64">
+    <div className={className}>
       <div className="relative pb-[150%] w-full overflow-hidden rounded-lg shadow-md">
         <img
           src={IMAGES_URL + poster_path}
