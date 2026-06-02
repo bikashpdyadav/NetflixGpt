@@ -35,7 +35,9 @@ const TVContainer = () => {
       
       <div className="bg-black lg:mb-0 mb-8">
         <MainTVContainer />
-        <TVList />
+        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12">
+          <TVList />
+        </div>
       </div>
     </>
   );

@@ -10,7 +10,7 @@ const SecondaryContainer = () => {
   );
 
   return (
-    <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-8">
+    <div className="flex flex-col gap-10 w-full">
       {movieByGenre?.length !== 0 ? (
         <MovieList
           title={currentMovieGenre?.selectedGenreName + " Movies"}

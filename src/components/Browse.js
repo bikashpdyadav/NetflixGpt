@@ -42,8 +42,10 @@ const Browse = () => {
         {/* Main content area */}
         <div className="bg-black lg:mb-0 mb-8">
           <MainContainer />
-          <SecondaryContainer />
-          <TVList />
+          <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 space-y-10">
+            <SecondaryContainer />
+            <TVList />
+          </div>
         </div>
       </div>
     </>

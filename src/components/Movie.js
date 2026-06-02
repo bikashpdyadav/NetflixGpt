@@ -25,7 +25,9 @@ const Movie = () => {
       </div>
       <div className="xs:bg-black mb-8 lg:mb-0">
         <MainContainer />
-        <SecondaryContainer />
+        <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12">
+          <SecondaryContainer />
+        </div>
       </div>
     </>
   );
