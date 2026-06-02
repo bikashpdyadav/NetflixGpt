@@ -13,12 +13,12 @@ import { onAuthStateChanged } from "firebase/auth";
 const iconSx = { color: "#ffffff", fontSize: 26 };
 
 const navItems = [
-  { label: "MySpace", path: "/mypage" },
-  { label: "Search", path: "/browse/search" },
-  { label: "Home", path: "/browse" },
-  { label: "Movies", path: "/browse/movie" },
-  { label: "Sports", path: "/browse" },
-  { label: "TV", path: "/browse/tv" },
+  { label: "MySpace", path: "/mypage", isProfile: true },
+  { label: "Search", path: "/browse/search", Icon: SearchIcon },
+  { label: "Home", path: "/browse", Icon: HomeIcon },
+  { label: "Movies", path: "/browse/movie", Icon: MovieIcon },
+  { label: "Sports", path: "/browse", Icon: SportsBaseballIcon },
+  { label: "TV", path: "/browse/tv", Icon: TvIcon },
 ];
 
 const Sidebar = () => {
@@ -40,57 +40,47 @@ const Sidebar = () => {
 
   const handleNavigation = (path) => navigate(path);
 
-  const quickIcons = [SearchIcon, HomeIcon, MovieIcon, SportsBaseballIcon, TvIcon];
-
   return (
     <div
-      className="fixed left-0 top-0 z-30 flex h-screen bg-[#0b0b0f] shadow-[4px_0_24px_rgba(0,0,0,0.45)]"
+      className="fixed left-0 top-0 z-30 flex h-screen items-center"
       onMouseEnter={() => setTouch(true)}
       onMouseLeave={() => setTouch(false)}
     >
-      <div className="flex h-full border-r border-white/10">
-        <div className="flex w-16 shrink-0 flex-col items-center gap-8 bg-gradient-to-b from-[#121218] to-[#0b0b0f] py-6">
+      <nav
+        className={`flex flex-col gap-8 border border-white/10 bg-gradient-to-l from-black to-[#0f1014] py-6 shadow-[4px_0_24px_rgba(0,0,0,0.5)] transition-all duration-300 ease-out ${
+          touch ? "min-w-[12rem] rounded-r-xl pl-4 pr-8" : "w-16 items-center rounded-r-lg px-2"
+        }`}
+      >
+        {navItems.map(({ label, path, Icon, isProfile }) => (
           <button
+            key={label}
             type="button"
-            className="rounded-full p-0.5 ring-1 ring-white/20 transition hover:ring-white/50"
-            onClick={() => handleNavigation("/mypage")}
-            aria-label="Profile"
+            onClick={() => handleNavigation(path)}
+            className={`flex items-center text-left transition hover:opacity-90 ${
+              touch ? "w-full justify-start gap-4" : "w-full justify-center"
+            }`}
           >
-            <img
-              src="https://img1.hotstarext.com/image/upload/w_201,h_200,c_fill/v1/feature/profile/38.png"
-              alt=""
-              className="h-9 w-9 rounded-full object-cover"
-            />
-          </button>
-          {quickIcons.map((Icon, index) => (
-            <button
-              key={index}
-              type="button"
-              className="rounded-lg p-1 transition hover:bg-white/10"
-              aria-label={`Quick nav ${index}`}
-            >
-              <Icon sx={iconSx} />
-            </button>
-          ))}
-        </div>
-
-        <div
-          className={`flex flex-col justify-center gap-4 overflow-hidden border-l border-white/10 bg-[#14141c] py-6 pl-5 pr-8 transition-all duration-300 ${
-            touch ? "w-44 opacity-100" : "w-0 opacity-0"
-          }`}
-        >
-          {navItems.map(({ label, path }) => (
-            <button
-              key={label}
-              type="button"
-              className="cursor-pointer whitespace-nowrap text-left text-base font-semibold text-slate-300 transition hover:text-white"
-              onClick={() => handleNavigation(path)}
+            {isProfile ? (
+              <img
+                src="https://img1.hotstarext.com/image/upload/w_201,h_200,c_fill/v1/feature/profile/38.png"
+                alt=""
+                className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-white/20"
+              />
+            ) : (
+              <Icon sx={iconSx} className="shrink-0" />
+            )}
+            <span
+              className={`whitespace-nowrap text-base font-semibold text-slate-300 transition-all duration-300 hover:text-white ${
+                touch
+                  ? "max-w-[8rem] opacity-100"
+                  : "max-w-0 overflow-hidden opacity-0"
+              }`}
             >
               {label}
-            </button>
-          ))}
-        </div>
-      </div>
+            </span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
 };
