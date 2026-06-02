@@ -14,7 +14,7 @@ const HelpSetting = () => {
       <div className="xs:block lg:hidden">
         <MenuBar />
       </div>
-      <div className="bg-gradient-to-r from-black via-stone-800 to-gray-500 gap-24 flex flex-col">
+      <div className="bg-gradient-to-r from-black via-stone-800 to-gray-500 gap-24 flex flex-col lg:ml-16">
         <div className="flex flex-col md:flex-row bg-gradient-to-r from-black via-stone-800 to-gray-500">
           <div className="text-white flex flex-col w-full gap-8 p-8 md:p-12 pl-6 md:pl-20">
             <h1 className="text-2xl font-bold">Help & Settings</h1>

@@ -12,71 +12,73 @@ import { auth } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Sidebar = () => {
-    const [touch, setTouch] = useState(false);
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const [touch, setTouch] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(addUser({ email: user.email, uid: user.uid }));
-            } else {
-                dispatch(removeUser());
-                navigate("/");
-            }
-        });
-        return unsubscribe;
-    }, [dispatch, navigate]);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(addUser({ email: user.email, uid: user.uid }));
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+    return unsubscribe;
+  }, [dispatch, navigate]);
 
-    const handleNavigation = (path) => navigate(path);
+  const handleNavigation = (path) => navigate(path);
 
-    return (
-        <div className="fixed left-0 top-0 h-screen flex items-center z-10">
-            <div
-                className="bg-[rgba(15,16,20,0.95)] py-4 w-1/4 flex bg-gradient-to-l from-black cursor-pointer h-fit"
-                onMouseEnter={() => setTouch(true)}
-                onMouseLeave={() => setTouch(false)}
-            >
-                <div className="flex flex-col items-center justify-center gap-10">
-                    <div className="flex items-center justify-center">
-                        <img
-                            src="https://img1.hotstarext.com/image/upload/w_201,h_200,c_fill/v1/feature/profile/38.png"
-                            alt=""
-                            className="w-1/2"
-                        />
-                    </div>
-                    {[SearchIcon, HomeIcon, MovieIcon, SportsBaseballIcon, TvIcon].map((Icon, index) => (
-                        <div key={index} className="text-white">
-                            <Icon />
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {touch && (
-                <Fade>
-                    <div
-                        className="flex flex-col gap-6 bg-gradient-to-r from-black bg-opacity-80 font-extrabold text-base text-slate-300 py-2"
-                        onMouseEnter={() => setTouch(true)}
-                        onMouseLeave={() => setTouch(false)}
-                    >
-                        {[
-                            { label: "MySpace", path: "/mypage" },
-                            { label: "Search", path: "/browse/search" },
-                            { label: "Home", path: "/browse" },
-                            { label: "Movies", path: "/browse/movie" },
-                            { label: "Sports", path: "/browse" },
-                            { label: "TV", path: "/browse/tv" }
-                        ].map(({ label, path }) => (
-                            <div key={label} className="cursor-pointer text-lg py-2" onClick={() => handleNavigation(path)}>
-                                {label}
-                            </div>
-                        ))}
-                    </div>
-                </Fade>
-            )}
+  return (
+    <div
+      className="fixed left-0 top-0 z-30 flex h-screen items-center"
+      onMouseEnter={() => setTouch(true)}
+      onMouseLeave={() => setTouch(false)}
+    >
+      <div className="flex h-fit cursor-pointer bg-gradient-to-l from-black bg-[rgba(15,16,20,0.95)] py-4">
+        <div className="flex w-16 shrink-0 flex-col items-center justify-center gap-10">
+          <div className="flex items-center justify-center">
+            <img
+              src="https://img1.hotstarext.com/image/upload/w_201,h_200,c_fill/v1/feature/profile/38.png"
+              alt=""
+              className="w-10"
+            />
+          </div>
+          {[SearchIcon, HomeIcon, MovieIcon, SportsBaseballIcon, TvIcon].map(
+            (Icon, index) => (
+              <div key={index} className="text-white">
+                <Icon />
+              </div>
+            )
+          )}
         </div>
-    );
+
+        {touch && (
+          <Fade>
+            <div className="flex flex-col gap-6 bg-gradient-to-r from-black bg-opacity-80 py-2 pl-4 pr-6 font-extrabold text-base text-slate-300">
+              {[
+                { label: "MySpace", path: "/mypage" },
+                { label: "Search", path: "/browse/search" },
+                { label: "Home", path: "/browse" },
+                { label: "Movies", path: "/browse/movie" },
+                { label: "Sports", path: "/browse" },
+                { label: "TV", path: "/browse/tv" },
+              ].map(({ label, path }) => (
+                <div
+                  key={label}
+                  className="cursor-pointer py-2 text-lg hover:text-white"
+                  onClick={() => handleNavigation(path)}
+                >
+                  {label}
+                </div>
+              ))}
+            </div>
+          </Fade>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Sidebar;

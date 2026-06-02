@@ -18,7 +18,7 @@ const MySpace = () => {
         </div>
 
         {/* Main Content Section */}
-        <div className="flex-grow w-full xs:p-4 sm:p-8 lg:p-16 bg-gradient-to-r from-black via-gray-700 to-gray-900 flex flex-col gap-16">
+        <div className="flex-grow w-full xs:p-4 sm:p-8 lg:p-16 lg:ml-16 bg-gradient-to-r from-black via-gray-700 to-gray-900 flex flex-col gap-16">
           <TopContainer />
           <div className="xs:-mt-4 border-b-2 border-gray-500 opacity-50"></div>
           <MiddleContainer />

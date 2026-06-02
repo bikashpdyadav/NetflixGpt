@@ -51,7 +51,7 @@ const ItemDetails = () => {
         <MenuBar />
       </div>
 
-      <div className="flex flex-col items-center bg-gray-950 p-6 space-y-6 xs:flex-wrap">
+      <div className="flex flex-col items-center bg-gray-950 p-6 space-y-6 xs:flex-wrap lg:ml-16">
         {/* Trailer and Movie Details Section */}
         <div className="flex flex-col md:flex-row md:space-x-4 w-full md:w-[90%] lg:w-[80%] p-6 bg-gray-900 rounded-lg shadow-lg">
           {officialTrailer ? (

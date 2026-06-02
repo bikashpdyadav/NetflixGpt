@@ -17,7 +17,7 @@ const SearchContainer = () => {
         <MenuBar />
       </div>
       
-      <div className="flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow lg:ml-16">
         <SearchBar />
         <div className="px-4 lg:px-10">
           <GPTSuggestions />

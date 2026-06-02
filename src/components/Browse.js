@@ -40,7 +40,7 @@ const Browse = () => {
         </div>
 
         {/* Main content area */}
-        <div className="bg-black lg:mb-0 mb-8 flex-1 min-w-0 w-full overflow-x-hidden">
+        <div className="bg-black lg:mb-0 mb-8 flex-1 min-w-0 w-full overflow-x-hidden lg:ml-16">
           <MainContainer />
           <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-12 space-y-10 min-w-0 w-full">
             <SecondaryContainer />
