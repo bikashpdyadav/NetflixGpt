@@ -3,8 +3,6 @@ import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
 const MovieList = ({ title, movies }) => {
-  console.log(`MovieList - ${title}:`, { movies });
-  
   return (
     <div className="w-screen mb-6"> 
       <h1 className="xs:text-2xl lg:text-3xl text-white pl-6 font-semibold">

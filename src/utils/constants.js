@@ -17,6 +17,7 @@ export const RAPID_API = {
 export const GPT_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
 
 export const IMAGES_URL = "https://image.tmdb.org/t/p/w500/";
+export const BACKDROP_IMAGE_URL = "https://image.tmdb.org/t/p/original";
 export const API_URL = "https://api.themoviedb.org/3/movie/";
 export const API_URL_MOVIE = "https://api.themoviedb.org/3/tv/";
 

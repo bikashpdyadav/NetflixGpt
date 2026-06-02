@@ -22,7 +22,7 @@ const TVList = () => {
   useTVTopRated();
 
   return (
-    <div className="relative flex flex-col space-y-6 lg:pl-10"> {/* Adds vertical spacing */}
+    <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] flex flex-col space-y-6 lg:pl-10 pb-8">
       <MovieList title={"Airing Today"} movies={tvStore.tvAiringToday} />
       <MovieList title={"On the Air"} movies={tvStore.onTheAir} />
       <MovieList title={"Popular TV Series"} movies={tvStore.popular} />

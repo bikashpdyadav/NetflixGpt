@@ -1,27 +1,35 @@
 import React from "react";
 import useMovieTrailer from "../../hooks/useMovieTrailer";
 import { useSelector } from "react-redux";
+import { BACKDROP_IMAGE_URL } from "../../utils/constants";
 
-const VideoContainer = ({ movieId }) => {
+const VideoContainer = ({ movieId, backdropPath }) => {
   const movieTrailer = useSelector((store) => store.movie?.movieTrailerList);
   const trailerKey = movieTrailer?.[0]?.key;
-  // const location = useLocation();
-  // const [currentLocation, setCurrentLocation] = useState("/browse");
 
-  // Fetch trailer based on movieId
   useMovieTrailer(movieId);
-  // useEffect(() => {
-  //   setCurrentLocation(location.pathname);
-  // }, [location]);
-  if (!trailerKey) return null;
+
+  if (!trailerKey && !backdropPath) return null;
 
   return (
-    <div>
-      <iframe
-        className="w-full h-[56vw] lg:h-[36vw] aspect-video max-w-full"
-        src={`https://www.youtube.com/embed/${trailerKey}?&autoplay=1&mute=1`}
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    <div className="relative z-0 w-full">
+      {trailerKey ? (
+        <iframe
+          className="w-full h-[56vw] lg:h-[36vw] aspect-video max-w-full pointer-events-none"
+          src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&controls=0&rel=0`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        />
+      ) : (
+        <img
+          src={`${BACKDROP_IMAGE_URL}${backdropPath}`}
+          alt=""
+          className="w-full h-[56vw] lg:h-[36vw] object-cover"
+        />
+      )}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none"
+        aria-hidden="true"
       />
     </div>
   );

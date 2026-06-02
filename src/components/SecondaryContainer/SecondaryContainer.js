@@ -10,38 +10,36 @@ const SecondaryContainer = () => {
   );
 
   return (
-    <div className="lg:pt-80">
-      <div className="relative xs:mt-4 lg:-mt-80 lg:pl-10">
-        {movieByGenre?.length !== 0 ? (
+    <div className="relative z-10 -mt-[14vw] lg:-mt-[9vw] lg:pl-10 pb-8">
+      {movieByGenre?.length !== 0 ? (
+        <MovieList
+          title={currentMovieGenre?.selectedGenreName + " Movies"}
+          movies={movieByGenre}
+        />
+      ) : (
+        <>
           <MovieList
-            title={currentMovieGenre?.selectedGenreName + " Movies"}
-            movies={movieByGenre}
+            title={"Now Playing"}
+            movies={movieStore.nowPlayingMovieList}
           />
-        ) : (
-          <>
-            <MovieList
-              title={"Now Playing"}
-              movies={movieStore.nowPlayingMovieList}
-            />
-            <MovieList
-              title={"Trending"}
-              movies={movieStore.trendingMovieList}
-            />
-            <MovieList
-              title={"Popular Movies"}
-              movies={movieStore.popularMovieList}
-            />
-            <MovieList
-              title={"Top Rated"}
-              movies={movieStore.topRatedMovieList}
-            />
-            <MovieList
-              title={"Upcoming"}
-              movies={movieStore.upcomingMovieList}
-            />
-          </>
-        )}
-      </div>
+          <MovieList
+            title={"Trending"}
+            movies={movieStore.trendingMovieList}
+          />
+          <MovieList
+            title={"Popular Movies"}
+            movies={movieStore.popularMovieList}
+          />
+          <MovieList
+            title={"Top Rated"}
+            movies={movieStore.topRatedMovieList}
+          />
+          <MovieList
+            title={"Upcoming"}
+            movies={movieStore.upcomingMovieList}
+          />
+        </>
+      )}
     </div>
   );
 };
