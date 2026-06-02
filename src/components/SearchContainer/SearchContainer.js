@@ -1,6 +1,7 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import MovieSuggestion from "./MovieSuggestion";
+import GPTSuggestions from "./GPTSuggestions";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 import MenuBar from "../MenuBar";
@@ -17,8 +18,11 @@ const SearchContainer = () => {
       </div>
       
       <div className="flex flex-col flex-grow">
-      <SearchBar />
-      <MovieSuggestion />
+        <SearchBar />
+        <div className="px-4 lg:px-10">
+          <GPTSuggestions />
+        </div>
+        <MovieSuggestion />
       </div>
     </div>
   );

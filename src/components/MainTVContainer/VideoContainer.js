@@ -15,6 +15,8 @@ const VideoContainer = ({ tvId }) => {
   //   );
   // }
 
+  if (!trailerKey) return null;
+
   return (
     <div>
       <iframe

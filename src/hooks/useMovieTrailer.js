@@ -7,19 +7,28 @@ const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
   const getMovieTrailer = async () => {
     if (movieId) {
-      const response = await fetch(API_URL + movieId + "/videos", API_OPTIONS);
-      const data = await response.json();
+      try {
+        const response = await fetch(API_URL + movieId + "/videos", API_OPTIONS);
+        const data = await response.json();
+        const results = Array.isArray(data?.results) ? data.results : [];
 
-      const filteredMovies = data.results?.filter(
-        (movieTrailer) =>
-          movieTrailer.type === "Trailer" &&
-          movieTrailer.name === "Official Trailer"
-      );
+        const filteredMovies = results.filter(
+          (movieTrailer) =>
+            movieTrailer.type === "Trailer" &&
+            movieTrailer.name === "Official Trailer"
+        );
 
-      const trailer =
-        filteredMovies?.length === 0 ? data.results[0] : filteredMovies;
+        const trailer =
+          filteredMovies.length > 0
+            ? filteredMovies
+            : results[0]
+            ? [results[0]]
+            : [];
 
-      dispatch(addMovieTrailer(trailer));
+        dispatch(addMovieTrailer(trailer));
+      } catch (error) {
+        dispatch(addMovieTrailer([]));
+      }
     }
   };
   useEffect(() => {

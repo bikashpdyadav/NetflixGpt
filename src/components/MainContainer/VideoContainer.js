@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const VideoContainer = ({ movieId }) => {
   const movieTrailer = useSelector((store) => store.movie?.movieTrailerList);
-  const trailerKey = movieTrailer[0]?.key;
+  const trailerKey = movieTrailer?.[0]?.key;
   // const location = useLocation();
   // const [currentLocation, setCurrentLocation] = useState("/browse");
 
@@ -13,6 +13,8 @@ const VideoContainer = ({ movieId }) => {
   // useEffect(() => {
   //   setCurrentLocation(location.pathname);
   // }, [location]);
+  if (!trailerKey) return null;
+
   return (
     <div>
       <iframe
